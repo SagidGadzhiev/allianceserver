@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const novaProductsSchema = new Schema({
-    code: {type: String},
+    code: {type: String, unique: true, require: true},
     product: {type: String},
     class: {type: String},
     price: {type: Number},
@@ -12,7 +12,7 @@ const novaProductsSchema = new Schema({
     img: {type: String},
     category: {type: String},
     subcategory: {type: String},
-    id: {type: Number, unique: true}
+    id: {type: Number, unique: true, require: true}
 }, {
     versionKey: false
 });

@@ -4,7 +4,7 @@ const saleProds = require('../models/saleProducts-model');
 
 router.get('/', async (req, res) => {
     const it = await saleProds.find().then(data => data);
-    res.json(it)
+    return res.json(it)
 });
 
 router.post('/', async (req, res) => {
@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
             console.log(err);
         console.log(doc)
     });
-    res.json({status: 'success', saleProd})
+    return res.json({status: 'success', saleProd})
 });
 
 router.delete('/', async (req, res) => {
@@ -23,7 +23,7 @@ router.delete('/', async (req, res) => {
             console.log(err);
         console.log(doc)
     });
-    res.json({status: 'successfully deleted'})
+    return res.json({status: 'successfully deleted'})
 });
 
 module.exports = router;
