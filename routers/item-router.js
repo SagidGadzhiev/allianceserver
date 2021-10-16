@@ -7,4 +7,13 @@ router.get('/', async (req, res) => {
     return res.json(items);
 });
 
+router.delete('/', async (req, res) => {
+    await products.deleteMany({}, {}, (err, doc) => {
+        if (err)
+            console.log(err);
+        console.log(doc)
+    });
+    return res.json({status: 'successfully deleted'})
+});
+
 module.exports = router;
