@@ -22,30 +22,23 @@ server.get('/', (req, res) => {
     res.send('Server is working')
 });
 
-server.patch('/image/:productId', async (req, res) => {
-    const {productId} = req.params;
-    const updateProductImg = req.body.img;
+const collections = [
+    productsArr,
+    novaProdsModel,
+    saleProdsModel
+];
 
-    await productsArr.updateOne({id: productId}, {$set: {img: updateProductImg}}, null, (err, doc) => {
-        if (err)
-            console.log(err);
-        console.log(doc)
-    });
+const updateImage = (prodID, url) => {
+    for (let i = 0; i < collections.length; i++) {
+        collections[i].updateOne({id: prodID}, {$set: {img: url}});
+    }
+};
 
-    await novaProdsModel.updateOne({id: productId}, {$set: {img: updateProductImg}}, null, (err, doc) => {
-        if (err)
-            console.log(err);
-        console.log(doc)
-    });
-
-    await saleProdsModel.updateOne({id: productId}, {$set: {img: updateProductImg}}, null, (err, doc) => {
-        if (err)
-            console.log(err);
-        console.log(doc)
-    });
-
-    res.json({status: "success", id: productId, img: updateProductImg})
-
+server.patch('/image/:code', async (req, res) => {
+    const { code } = req.params;
+    const img = req.body.img;
+    updateImage(req.params.code, img);
+    return res.json({status: "success", id: code, img: img});
 });
 
 server.use('/products', itemsRouter);
