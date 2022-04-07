@@ -19,7 +19,7 @@ server.use(cors());
 connectToDB();
 
 server.get('/', (req, res) => {
-    res.send('Server is working')
+    res.send('Server is working');
 });
 
 const collections = [
@@ -30,15 +30,15 @@ const collections = [
 
 const updateImage = (prodID, url) => {
     for (let i = 0; i < collections.length; i++) {
-        collections[i].updateOne({id: prodID}, {$set: {img: url}});
+        collections[i].updateOne({ id: prodID }, { $set: { img: url } });
     }
 };
 
-server.patch('/image/:code', async (req, res) => {
-    const { code } = req.params;
+server.patch('/image/:id', async (req, res) => {
+    const { id } = req.params;
     const img = req.body.img;
-    updateImage(req.params.code, img);
-    return res.json({status: "success", id: code, img: img});
+    updateImage(id, img);
+    return res.json({ status: 'success', id, img });
 });
 
 server.use('/products', itemsRouter);
