@@ -30,7 +30,11 @@ const collections = [
 
 const updateImage = (prodID, url) => {
     for (let i = 0; i < collections.length; i++) {
-        collections[i].updateOne({ id: prodID }, { $set: { img: url } });
+        collections[i].updateOne({ id: prodID }, { $set: { img: url } }, null, (err, res) => {
+            if (err)
+                console.log(err);
+            console.log(res);
+        });
     }
 };
 
