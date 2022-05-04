@@ -1,6 +1,9 @@
 const express = require('express');
-const router = express.Router();
+
 const saleProds = require('../models/saleProducts-model');
+
+const router = express.Router();
+
 
 router.get('/', async (req, res) => {
     const it = await saleProds.find().then(data => data);

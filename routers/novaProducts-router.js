@@ -1,6 +1,9 @@
 const express = require('express');
-const router = express.Router();
+
 const novaProds = require('../models/novaProducts-model');
+
+const router = express.Router();
+
 
 router.get('/', async (req, res) => {
     const it = await novaProds.find().then(data => data);

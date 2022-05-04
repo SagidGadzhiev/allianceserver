@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
 const orderSchema = new Schema({
     shopping: {type: Array},
     date: {type: String},
