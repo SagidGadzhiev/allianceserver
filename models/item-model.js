@@ -9,7 +9,9 @@ const itemSchema = new Schema({
     unit: {type: String},
     comment: {type: String},
     count: {type: Number},
+    class: {type: String},
     category: {type: String},
+    subcategory: {type: String},
     img: {type: String},
     id: {type: Number, require: true, unique: true}
 }, {

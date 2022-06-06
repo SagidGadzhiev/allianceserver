@@ -49,6 +49,13 @@ router.get('/limit/:limit', async (req, res) => {
         .limit(+req.params.limit);
 });
 
+router.put('/', async (req, res) => {
+    const newProducts = req.body;
+    await products.deleteMany((err, doc) => err ? err : doc);
+    await products.create(newProducts, (err, doc) => err ? err : doc);
+    return res.json({status: 'New products list created :)'})
+});
+
 router.delete('/', async (req, res) => {
     await products.deleteMany((err, doc) => err ? err : doc);
     return res.json({ status: 'successfully deleted' });
