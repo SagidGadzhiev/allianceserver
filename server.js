@@ -10,6 +10,7 @@ const novaProdsRouter = require('./routers/novaProducts-router');
 const saleProdsRouter = require('./routers/saleProducts-router');
 const orderRouter = require('./routers/orders-router');
 const imageRouter = require('./routers/image-router');
+const currencyRouter = require('./routers/currency-router');
 
 
 const server = express();
@@ -25,5 +26,6 @@ server.use('/nova', novaProdsRouter);
 server.use('/sale', saleProdsRouter);
 server.use('/orders', orderRouter);
 server.use('/image', imageRouter);
+server.use('/currency', currencyRouter);
 
 server.listen(PORT, () => console.log(`Serving on http://localhost:${PORT}`));
