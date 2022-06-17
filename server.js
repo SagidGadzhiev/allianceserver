@@ -16,7 +16,7 @@ const currencyRouter = require('./routers/currency-router');
 const server = express();
 const PORT = process.env.PORT || 5000;
 
-server.use(express.json());
+server.use(express.json({limit: '50mb'}));
 server.use(cors());
 
 connectToDB();

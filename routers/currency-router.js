@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.get('/', async (req, res) => {
-    const currency = currencies.find({}, (err, doc) => err ? err : doc);
+    const currency = await currencies.find({}, (err, doc) => err ? err : doc);
     return res.json(currency);
 });
 
