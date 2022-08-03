@@ -13,25 +13,26 @@ router.get('/', async (req, res) => {
             .map((i) => {
                 return {
                     ...i,
-                    price: i.price <= 30 ?
-                        i.price + (i.price * 0.2)
-                        :
-                        i.price <= 40 ?
-                            i.price + (i.price * 0.1)
-                            :
-                            i.price <= 50 ?
-                                i.price + (i.price * 0.07)
-                                :
-                                i.price <= 60 ?
-                                    i.price + (i.price * 0.08)
-                                    :
-                                    i.price <= 80 ?
-                                        i.price + (i.price * 0.05)
-                                        :
-                                        i.price <= 90 ?
-                                            i.price + (i.price * 0.06)
-                                            :
-                                            i.price + (i.price * 0.04)
+                    price: i.price + (i.price * 0.1)
+                    // price: i.price <= 30 ?
+                    //     i.price + (i.price * 0.2)
+                    //     :
+                    //     i.price <= 40 ?
+                    //         i.price + (i.price * 0.1)
+                    //         :
+                    //         i.price <= 50 ?
+                    //             i.price + (i.price * 0.07)
+                    //             :
+                    //             i.price <= 60 ?
+                    //                 i.price + (i.price * 0.08)
+                    //                 :
+                    //                 i.price <= 80 ?
+                    //                     i.price + (i.price * 0.05)
+                    //                     :
+                    //                     i.price <= 90 ?
+                    //                         i.price + (i.price * 0.06)
+                    //                         :
+                    //                         i.price + (i.price * 0.04)
                 };
             })
         );
@@ -53,7 +54,7 @@ router.put('/', async (req, res) => {
     const newProducts = req.body;
     await products.deleteMany((err, doc) => err ? err : doc);
     await products.create(newProducts, (err, doc) => err ? err : doc);
-    return res.json({status: 'New products list created :)'})
+    return res.json({ status: 'New products list created :)' });
 });
 
 router.delete('/', async (req, res) => {
