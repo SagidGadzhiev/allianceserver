@@ -11,29 +11,7 @@ router.get('/', async (req, res) => {
         .then(data => data
             .map(i => i._doc)
             .map((i) => {
-                return {
-                    ...i,
-                    price: i.price + (i.price * 0.1)
-                    // price: i.price <= 30 ?
-                    //     i.price + (i.price * 0.2)
-                    //     :
-                    //     i.price <= 40 ?
-                    //         i.price + (i.price * 0.1)
-                    //         :
-                    //         i.price <= 50 ?
-                    //             i.price + (i.price * 0.07)
-                    //             :
-                    //             i.price <= 60 ?
-                    //                 i.price + (i.price * 0.08)
-                    //                 :
-                    //                 i.price <= 80 ?
-                    //                     i.price + (i.price * 0.05)
-                    //                     :
-                    //                     i.price <= 90 ?
-                    //                         i.price + (i.price * 0.06)
-                    //                         :
-                    //                         i.price + (i.price * 0.04)
-                };
+                return { ...i, price: i.price / 0.9 };
             })
         );
     return res.json(items);
