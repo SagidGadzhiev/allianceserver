@@ -15,7 +15,7 @@ const bestsellersRouter = require('./routers/bestsellers-router');
 
 
 const server = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 server.use(express.json({limit: '50mb'}));
 server.use(cors());
