@@ -109,7 +109,7 @@ router.get('/', async (req, res) => {
         .then(data => data
             .map(i => i._doc)
             .map((i) => {
-                return { ...i, price: i.price / 0.9 };
+                return { ...i, price: i.price >= 150 ? i.price * 1.06 : i.price * 1.1 };
             })
             .map(item => {
                 for (let i = 0; i < indexArray.length; i++) {
