@@ -131,6 +131,8 @@ router.get('/', async (req, res) => {
                 return i;
             })
         );
+    res.setHeader('Access-Control-Allow-Origin', 'http://allianceplus.kg');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     return res.json(items);
 });
 
