@@ -3,9 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
-const https = require('https');
-const fs = require('fs');
-
 const connectToDB = require('./connectToDB');
 
 const itemsRouter = require('./routers/item-router');
@@ -25,11 +22,6 @@ server.use(cors());
 
 connectToDB();
 
-const options = {
-    key:fs.readFileSync('certificates/key.pem'),
-    cert:fs.readFileSync('certificates/cert.pem')
-};
-
 server.get('/', (req, res) => res.send('Server is working'));
 
 server.use('/products', itemsRouter);
@@ -40,5 +32,4 @@ server.use('/image', imageRouter);
 server.use('/currency', currencyRouter);
 server.use('/bestsellers', bestsellersRouter);
 
-https.createServer(options, server).listen(PORT, () => console.log(`Serving on http://localhost:${PORT}`));
-// server.listen(PORT, () => console.log(`Serving on http://localhost:${PORT}`));
+server.listen(PORT, () => console.log(`Serving on http://localhost:${PORT}`));
